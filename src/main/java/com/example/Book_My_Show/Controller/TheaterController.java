@@ -34,4 +34,8 @@ public class TheaterController {
     public List<String>getAll(){
         return theaterService.getAll();
     }
+    @GetMapping("shows")
+    public List<String> shows(@RequestParam String name ){
+    return theaterService.shows(name);
+    }
 }

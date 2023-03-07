@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TicketRepository extends JpaRepository<TicketEntity,Integer> {
 
-
+    //@Query(value = "select * from tickets", nativeQuery = true)
+    //TicketEntity cancelTicket(int userId, int showId);
 }

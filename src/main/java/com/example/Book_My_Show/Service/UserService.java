@@ -30,4 +30,11 @@ public class UserService {
         return userRepository.getAll();
     }
 
+    public String updateAddress(String mob, String address){
+        UserEntity userEntity = userRepository.findMob(mob);
+        userEntity.setAddress(address);
+        userRepository.save(userEntity); //new address saved
+        return "Your address has been updated";
+    }
+
 }

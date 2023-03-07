@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     @Query(value = "select name from users", nativeQuery = true)
     List<String> getAll();
 
+    @Query(value = "select * from users where mob_no=:mob", nativeQuery = true)
+    UserEntity findMob(String mob);
 }

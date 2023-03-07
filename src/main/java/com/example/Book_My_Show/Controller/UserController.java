@@ -3,6 +3,7 @@ package com.example.Book_My_Show.Controller;
 import com.example.Book_My_Show.EntryDto.UserEntryDto;
 import com.example.Book_My_Show.Repository.UserRepository;
 import com.example.Book_My_Show.Service.UserService;
+import jdk.jfr.StackTrace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,17 @@ public class UserController {
     @DeleteMapping("delete") //delete wrt mobile
     public String deleteUser(@RequestParam String mob){
         return userService.deleteUser(mob);
+    }
+
+    @PutMapping("updateAddress") //update address wrt mobNo
+    public ResponseEntity<String> updateAddress(@RequestParam String mobNo , @RequestParam String address){
+        try {
+            String response = userService.updateAddress(mobNo, address);
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            String result = "User could not be updated";
+            return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("getAll")
