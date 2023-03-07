@@ -28,7 +28,7 @@ public class TicketService {
     @Autowired
     private UserRepository userRepository;
 
-    public String addTicket(TicketEntryDto ticketEntryDto) throws Exception{
+    public String addTicket(TicketEntryDto ticketEntryDto) throws Exception{ //book tickets
         TicketEntity ticketEntity = TicketConvertors.convertDtoToDto(ticketEntryDto);
 
         boolean isValidRequest = checkValidityOfRequestedSeats(ticketEntryDto);
@@ -94,7 +94,7 @@ public class TicketService {
 
 
     private boolean checkValidityOfRequestedSeats (TicketEntryDto ticketEntryDto){
-        int showId = ticketEntryDto.getShowId();
+        int showId = ticketEntryDto.getShowId(); //show id
         List<String> requestSeats = ticketEntryDto.getRequestedSeats();
         ShowEntity showEntity = showRepository.findById(showId).get();
         List<ShowSeatEntity> listOfSeats = showEntity.getListOfShowSeats();

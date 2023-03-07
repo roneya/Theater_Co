@@ -9,6 +9,8 @@ import com.example.Book_My_Show.Repository.ShowRepository;
 import com.example.Book_My_Show.Repository.TheaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,5 +82,10 @@ public class ShowService {
             return showSeatEntityList;
 
     }
+
+    public List<String> showsOfMovie(@RequestParam String name){   //giving -> show time and theater for given movie
+        return showRepository.showsOfMovie(name);
+    }
+
 
 }

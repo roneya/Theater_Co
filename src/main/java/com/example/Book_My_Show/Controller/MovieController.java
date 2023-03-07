@@ -32,17 +32,17 @@ public class MovieController {
         return movieService.getMovie(name);
     }
 
-    @GetMapping("getMovieRating")
+    @GetMapping("getMovieRating") //movies equal to greater given rating
     public List<String> getMovieRating (@RequestParam double rate){
         return movieService.getMovieRating(rate);
     }
 
-    @GetMapping("earning")
+    @GetMapping("earning")   //earning of movie
     public int getMovieRevenue( @RequestParam String name){
 
         return movieService.getMovieRevenue(name);
     }
-    @GetMapping("getAll")
+    @GetMapping("getAll") //all movie name lists
     public List<String> getAll( ){
 
         return movieService.getAll();

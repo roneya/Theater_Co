@@ -54,4 +54,8 @@ public class TheaterService {
         return theaterSeatEntityList;
 
     }
+
+    public List<String> getAll(){
+        return theaterRepository.getAllTheaters();
+    }
 }
