@@ -30,7 +30,7 @@ public class TheaterController {
         }
 
     }
-    @GetMapping("getall")
+    @GetMapping("getall")  //list of theaters name and location
     public List<String>getAll(){
         return theaterService.getAll();
     }
@@ -38,4 +38,5 @@ public class TheaterController {
     public List<String> shows(@RequestParam String name ){
     return theaterService.shows(name);
     }
+
 }

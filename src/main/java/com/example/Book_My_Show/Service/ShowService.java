@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -85,6 +88,26 @@ public class ShowService {
 
     public List<String> showsOfMovie(@RequestParam String name){   //giving -> show time and theater for given movie
         return showRepository.showsOfMovie(name);
+    }
+
+    public List<String> showAfter(LocalTime time){
+       List<ShowEntity> showEntityList = showRepository.findAll();
+       List<String> showEntityList1 = new ArrayList<>();
+
+
+            for(ShowEntity showEntity: showEntityList){
+                if(showEntity.getShowTime().isAfter(time)){
+                    MovieEntity movieEntity = movieRepository.findById(showEntity.getMovieEntity().getId()).get();
+                    TheaterEntity theaterEntity = theaterRepository.findById(showEntity.getTheaterEntity().getId()).get();
+                    showEntityList1.add(movieEntity.getMovieName()+" "+theaterEntity.getName()+" "+theaterEntity.getLocation());
+                }
+            }
+
+
+
+     return showEntityList1;
+
+
     }
 
 
